@@ -1,0 +1,178 @@
+*{
+    margin : 0px;
+    padding : 0px;
+}
+/* The profile pic */
+#potato{
+    margin-top : -50px;
+    height : 100px;
+    border-radius: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+/* The header image */
+#TV{
+    height: 400px;
+    width: 100%;
+}
+/* The heading TV Show List */
+#heading{
+    color: white;
+    margin-top: -286px;
+    text-align: center;
+    font-family: 'Roboto Slab', serif;
+    font-size: 36px;
+}
+/* The name Murilo */
+#potato_man{
+    text-align: center;
+    margin-top : 236px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    height: auto;
+}
+/* The div element for each show */
+.Box{
+    display : flex;
+    width : 70%;
+    margin: 50px auto 50px auto;
+    border : solid rgb(200,200,200) 1px;
+}
+.image{
+    border-radius: 10px;
+}
+/* Image and Season dropdown */
+.left_part{
+    display: flex;
+    flex-direction: column;
+    width : 20%;
+    margin : 15px;
+    flex-shrink: 0;
+}
+/* The show title */
+.head{
+    font-family: 'Roboto Slab',serif;
+    font-size: 36px;
+    font-weight: bold;
+    color: rgb(51,51,51);
+    padding: 15px 15px 0px 0px;
+}
+/* The vertical flex box for title link summary and genres */
+.vertical{
+    flex-direction: column;
+}
+.link{
+    color : rgba(60,180,214);
+    margin: 0px 0px 15px 0px;
+    text-decoration-line: none;
+}
+.link:hover{
+    text-decoration-line: underline;
+}
+.summary{
+    margin: 15px 15px 15px 0px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+    line-height: 32px;
+    color: rgb(51,51,51);
+}
+.genre{
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+    color: rgb(51,51,51);
+    flex-direction: row;
+}
+.genres{
+    flex-direction: row;
+}
+/* The genres mentioned */
+em{
+    display: flexbox;
+    background: rgba(230,181,11,0.1);
+    color: rgba(230,181,11);
+    font-size: 16px;
+    font-style: normal;
+    padding: 5px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+/* to set dropdown color */
+.dropdown{
+    border-color:rgba(66,180,214,0.5);
+    background-color: rgba(66,180,214,0.05);
+    font-family: 'Source Sans Pro', sans serif;
+    text-align: left;
+    width : 100%;
+    padding: 10px 10px;
+    margin-top: 15px;
+    border-radius: 5px;
+}
+
+/* To style the js elements */
+.hidden {
+    display: none;
+}
+
+.season_heading{
+    color: rgb(66,180,214);
+    font-size: 27px;
+	font-family: 'Roboto Slab', serif;
+	margin: 15px 15px 15px 0px;
+}
+.season_details{
+    display: flex;
+    flex-direction: column;
+}
+input{
+    margin-right: 5px;
+}
+
+.Marcar_Todos{
+    color: rgb(51, 51, 51);
+    font-family: 'Roboto Slab',serif;
+}
+.episode_box{
+    display: flex;
+    flex-direction: row;
+}
+.episode_images{
+    width: 25%;
+    max-height: 102px;
+    margin: 15px 15px 15px 0px;
+    border-radius: 5px;
+    flex-shrink: 0;
+}
+.description{
+    display: flex;
+    flex-direction: column;
+}
+.cbox_0, .cbox_1, .cbox_2{
+    margin-right: 10px;
+}
+.check_box_0, .check_box_1, .check_box_2{
+    margin-right: 10px;
+    margin-top: 20px;
+    margin-bottom: auto;
+}
+.episode_title{
+    font-family: 'Source Sans Pro',sans-serif;
+    font-size: 1.17em;
+    font-weight: bold;
+    color: rgb(51, 51, 51);
+    margin: 15px 0px 0px;
+}
+.airing_date{
+    color: gray;
+    font-family: 'Source Sans Pro',sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    margin-left: -23px;
+}
+.episode_summary{
+    color: rgb(51, 51, 51);
+    font-size: 18px;
+    line-height: 28px;
+    margin-left: -23px;
+}
