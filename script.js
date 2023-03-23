@@ -27,15 +27,11 @@ timeBox.appendChild(time);
 // calculating total time
 function compute(){
     var total = totalTime[0]+totalTime[1]+totalTime[2];
-    console.log(total);
     var day = Math.floor(total/1440);
     total%=1440;
-    console.log(total);
     var hour = Math.floor(total/60);
     total%=60;
-    console.log(total);
     var min = Math.floor(total);
-    console.log(total);
     time.innerHTML='';
     time.textContent= day+' days, '+hour+' hours, '+min+' mins';
 }
@@ -199,7 +195,6 @@ function calTime(event){
         totalTime[showNum] += TV_SHOWS[showNum].seasons[seasonNum-1][epiNum].runtime;
     else
         totalTime[showNum] -= TV_SHOWS[showNum].seasons[seasonNum-1][epiNum].runtime;
-    console.log(totalTime + ' min');
     compute();
 }
 function calTimeAll(elementAll){
@@ -210,7 +205,6 @@ function calTimeAll(elementAll){
         totalTime[showNum] += TV_SHOWS[showNum].seasons[seasonNum-1][epiNum].runtime;
     else
         totalTime[showNum] -= TV_SHOWS[showNum].seasons[seasonNum-1][epiNum].runtime;
-    console.log(totalTime + ' min');
     compute();
 }
 
