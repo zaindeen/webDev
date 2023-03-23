@@ -101,9 +101,9 @@ function create_drop_W(vertical,seasonNumber,show){
 
         //adding img src and desc from json
         if(i>8)
-            descTitle.textContent = 'S0' + seasonNumber + 'E' + parseInt(i+1) +': '+ TV_SHOWS[show].seasons[seasonNumber-1][i].runtime +' min';
+            descTitle.textContent = 'S0' + seasonNumber + 'E' + parseInt(i+1) +': '+ TV_SHOWS[show].seasons[seasonNumber-1][i].name;
         else
-            descTitle.textContent = 'S0' + seasonNumber + 'E0' + parseInt(i+1) +': '+TV_SHOWS[show].seasons[seasonNumber-1][i].runtime +' min';
+            descTitle.textContent = 'S0' + seasonNumber + 'E0' + parseInt(i+1) +': '+TV_SHOWS[show].seasons[seasonNumber-1][i].name;
         img.src = TV_SHOWS[show].seasons[seasonNumber-1][i].image;
         var [year,month,date] = TV_SHOWS[show].seasons[seasonNumber-1][i].airdate.split("-");
         descDate.textContent = date + "/" + month + "/" + year ;
