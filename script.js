@@ -88,13 +88,13 @@ function create_drop_W(vertical,seasonNumber,show){
     check_Box = document.querySelectorAll('.cbox');
     check_Box.forEach(
         checkBoxAll =>{
-        checkBoxAll.addEventListener('input',checkAll);
+        checkBoxAll.addEventListener('change',checkAll);
         }
     );
-    check_Box_epi = document.querySelectorAll('.check_box_'+show);
+    check_Box_epi = document.querySelectorAll('.check_box_'+show+'_'+seasonNumber);
     check_Box_epi.forEach(
         checkBoxAllEpi =>{
-        checkBoxAllEpi.addEventListener('input',calTime);
+        checkBoxAllEpi.addEventListener('change',calTime);
         }
     );
 }
@@ -126,7 +126,6 @@ function onWClick(event){
     // to know the current element in each show's dropdown so it can be hide at next dropdown
     prev[val][0] = val;
     prev[val][1] = number;
-    console.log(prev);
 }
 
 function checkAll(event){
@@ -138,14 +137,20 @@ function checkAll(event){
     if(cbox.checked){
     check_box_ep.forEach(
         check =>{
-            check.checked = true;
+            if(check.checked !== true){
+                check.checked = true;
+                calTimeAll(check);
+            }
         }
     );
     }
     else{
         check_box_ep.forEach(
             check =>{
-                check.checked = false;
+                if(check.checked !== false){
+                    check.checked = false;
+                    calTimeAll(check);
+                }
             }
         ); 
     }
@@ -157,6 +162,16 @@ function calTime(event){
     const seasonNum = element.id.split('_')[2];
     const epiNum = element.id.split('_')[3];
     if(element.checked)
+        totalTime[showNum] += TV_SHOWS[showNum].seasons[seasonNum-1][epiNum].runtime;
+    else
+        totalTime[showNum] -= TV_SHOWS[showNum].seasons[seasonNum-1][epiNum].runtime;
+    console.log(totalTime + ' min');
+}
+function calTimeAll(elementAll){
+    const showNum = elementAll.className.split('_')[2];
+    const seasonNum = elementAll.id.split('_')[2];
+    const epiNum = elementAll.id.split('_')[3];
+    if(elementAll.checked)
         totalTime[showNum] += TV_SHOWS[showNum].seasons[seasonNum-1][epiNum].runtime;
     else
         totalTime[showNum] -= TV_SHOWS[showNum].seasons[seasonNum-1][epiNum].runtime;
