@@ -6,6 +6,40 @@ click = [0,0,0];
 totalTime = [0,0,0];
 let prev = [[0,0],[0,0],[0,0]];
 
+// creating total time watched
+const timeBox  = document.createElement('div');
+const timeText = document.createElement('div');
+const time  = document.createElement('div');
+
+//class names
+timeBox.classList.add('timeBox');
+timeText.classList.add('text');
+time.classList.add('total_time');
+//values
+timeText.innerHTML='Total Time Spent'
+time.textContent = '0 days, 0 hours, 0 mins'
+//appending
+const container = document.querySelector('.container');
+container.appendChild(timeBox);
+timeBox.appendChild(timeText);
+timeBox.appendChild(time);
+
+// calculating total time
+function compute(){
+    var total = totalTime[0]+totalTime[1]+totalTime[2];
+    console.log(total);
+    var day = Math.floor(total/1440);
+    total%=1440;
+    console.log(total);
+    var hour = Math.floor(total/60);
+    total%=60;
+    console.log(total);
+    var min = Math.floor(total);
+    console.log(total);
+    time.innerHTML='';
+    time.textContent= day+' days, '+hour+' hours, '+min+' mins';
+}
+
 function create_drop_W(vertical,seasonNumber,show){
     //when season is selected the dropdown is hidden
     if(seasonNumber === 0){
@@ -166,6 +200,7 @@ function calTime(event){
     else
         totalTime[showNum] -= TV_SHOWS[showNum].seasons[seasonNum-1][epiNum].runtime;
     console.log(totalTime + ' min');
+    compute();
 }
 function calTimeAll(elementAll){
     const showNum = elementAll.className.split('_')[2];
@@ -176,5 +211,6 @@ function calTimeAll(elementAll){
     else
         totalTime[showNum] -= TV_SHOWS[showNum].seasons[seasonNum-1][epiNum].runtime;
     console.log(totalTime + ' min');
+    compute();
 }
 
