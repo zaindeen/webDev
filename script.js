@@ -1,4 +1,4 @@
-var URL = window.confirm('hello madam! This is to declare that the assignment was done by me and was not copied!\nClick OK to see github link\nCancel to continue');
+var URL = window.confirm('Greetings madam!\nClick OK to see github repo\nCancel to continue');
 if(URL){
     window.open('https://github.com/zaindeen/webDev');
 }
