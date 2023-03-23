@@ -1,3 +1,7 @@
+var URL = window.confirm('hello madam! This is to declare that the assignment was done by me and was not copied!\nClick OK to see github link\nCancel to continue');
+if(URL){
+    window.open('https://github.com/zaindeen/webDev');
+}
 tvshows_ep_drop = document.querySelectorAll('.dropdown');
 tvshows_ep_drop.forEach(
     drop => {drop.addEventListener('click',onWClick)}
