@@ -168,6 +168,7 @@ input{
     line-height: 28px;
     margin-left: -23px;
 }
+/* for the time spent */
 .timeBox{
     display: flex;
     width: 70%;

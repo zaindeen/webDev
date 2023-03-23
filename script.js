@@ -39,7 +39,6 @@ function compute(){
     time.innerHTML='';
     time.textContent= day+' days, '+hour+' hours, '+min+' mins';
 }
-
 function create_drop_W(vertical,seasonNumber,show){
     //when season is selected the dropdown is hidden
     if(seasonNumber === 0){
@@ -211,4 +210,3 @@ function calTimeAll(elementAll){
         totalTime[showNum] -= TV_SHOWS[showNum].seasons[seasonNum-1][epiNum].runtime;
     compute();
 }
-
