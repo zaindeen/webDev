@@ -148,14 +148,6 @@ input{
     display: flex;
     flex-direction: column;
 }
-.cbox_0, .cbox_1, .cbox_2{
-    margin-right: 10px;
-}
-.check_box_0, .check_box_1, .check_box_2{
-    margin-right: 10px;
-    margin-top: 20px;
-    margin-bottom: auto;
-}
 .episode_title{
     font-family: 'Source Sans Pro',sans-serif;
     font-size: 1.17em;

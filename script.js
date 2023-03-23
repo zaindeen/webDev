@@ -2,17 +2,24 @@ tvshows_ep_drop = document.querySelectorAll('.dropdown');
 tvshows_ep_drop.forEach(
     drop => {drop.addEventListener('click',onWClick)}
 );
-clickW = 0;
-totalTime = new Array(3);
-totalTime[0] = totalTime[1] = totalTime[2] = 0;
-let prev = [0,0];
+click = [0,0,0];
+totalTime = [0,0,0];
+let prev = [[0,0],[0,0],[0,0]];
 
 function create_drop_W(vertical,seasonNumber,show){
+    //when season is selected the dropdown is hidden
+    if(seasonNumber === 0){
+        const hide = document.querySelector('.show_'+prev[show][0]+'_season_'+prev[show][1]);
+        hide.classList.add('hidden');
+    }
+
+    // if the dropdown is already created just the hidden is removed 
     const ifExist = document.querySelector('.show_'+show+'_season_'+seasonNumber);
     if(ifExist !== null){
         ifExist.classList.remove('hidden');
         return;
     }
+
     // for season number and check box
     const seasContainer = document.createElement('div');
     const seas = document.createElement('h2');
@@ -22,13 +29,15 @@ function create_drop_W(vertical,seasonNumber,show){
     //class 
     seasContainer.classList.add('show_'+show+'_season_'+seasonNumber);
     seas.classList.add('season_heading');
-    check_box.classList.add('cbox_'+show);
+    check_box.classList.add('cbox');
+    check_box.id = 'show_'+show+'_sea_'+seasonNumber;
+
+    check_box.style.margin = "0px 10px 0px 0px";
     marcar.classList.add('Marcar_Todos');
 
     seas.textContent = 'Season '+seasonNumber;
     check_box.type = "checkbox";
-    marcar.for =  'ws01';
-    marcar.innerHTML = 'Marcar todos';
+    marcar.innerHTML = 'Select All';
 
     vertical.appendChild(seasContainer);
     seasContainer.appendChild(seas);
@@ -47,10 +56,11 @@ function create_drop_W(vertical,seasonNumber,show){
         const descSumm = document.createElement('p');
 
         // adding class 
+        descCheck.style.margin = "20px 10px auto 0px";
         episode.classList.add('episode_box');
         img.classList.add('episode_images');
         descDiv.classList.add('description');
-        descCheck.classList.add('check_box_'+show);
+        descCheck.classList.add('check_box_'+show+'_'+seasonNumber);
         descCheck.id = 'check_box_' + seasonNumber + "_" + i;
         descTitle.classList.add('episode_title');
         descDate.classList.add('airing_date');
@@ -74,16 +84,17 @@ function create_drop_W(vertical,seasonNumber,show){
         descDiv.appendChild(descDate);
         descDiv.appendChild(descSumm);
     }
-    check_Box = document.querySelectorAll('.cbox_'+show);
+    // event Listeners to all the check boxes as soon as they are created for time cal
+    check_Box = document.querySelectorAll('.cbox');
     check_Box.forEach(
         checkBoxAll =>{
-        checkBoxAll.addEventListener('click',checkAll);
+        checkBoxAll.addEventListener('input',checkAll);
         }
     );
     check_Box_epi = document.querySelectorAll('.check_box_'+show);
     check_Box_epi.forEach(
         checkBoxAllEpi =>{
-        checkBoxAllEpi.addEventListener('click',calTime);
+        checkBoxAllEpi.addEventListener('input',calTime);
         }
     );
 }
@@ -95,31 +106,35 @@ function onWClick(event){
     const vertical = document.querySelectorAll('.vertical');
     const number = parseInt(season.value.split(" ")[1]);
 
-    if(number!=0 & clickW===0){
+    if(number!==0 & click[val]===0){
         create_drop_W(vertical[val],number,val);
-        clickW = 1;
+        click[val] = 1;
     }
-    else if(number!=0 & clickW!=0){
-        const hide = document.querySelector('.show_'+prev[0]+'_season_'+prev[1]); 
-        if(prev[0]===val)
-            hide.classList.add('hidden');   
+    else if(number!== 0 & click[val]!==0){
+        if(prev[val][1]!==0){
+        const hide = document.querySelector('.show_'+prev[val][0]+'_season_'+prev[val][1]); 
+        hide.classList.add('hidden');
+        }   
         create_drop_W(vertical[val],number,val);
     }
     else{
-        const hide = document.querySelector('.show_'+prev[0]+'_season_'+prev[1]); 
+        if(prev[val][1]!==0){
+        const hide = document.querySelector('.show_'+prev[val][0]+'_season_'+prev[val][1]); 
         hide.classList.add('hidden');
+        }
     }
-
-    if(number!==0)
-        prev = [val,number];
+    // to know the current element in each show's dropdown so it can be hide at next dropdown
+    prev[val][0] = val;
+    prev[val][1] = number;
     console.log(prev);
 }
 
 function checkAll(event){
     const present = event.currentTarget;
-    const num = present.className.split('_')[1];    
-    const cbox = document.querySelector('.cbox_'+num);
-    const check_box_ep = document.querySelectorAll('.check_box_'+num);
+    const showNum = present.id.split('_')[1];
+    const seaNum = present.id.split('_')[3];    
+    const cbox = document.getElementById('show_'+showNum+'_sea_'+seaNum);
+    const check_box_ep = document.querySelectorAll('.check_box_'+showNum+'_'+seaNum);
     if(cbox.checked){
     check_box_ep.forEach(
         check =>{
